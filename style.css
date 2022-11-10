@@ -1,0 +1,110 @@
+* {
+      padding: 0;
+      margin: 0;
+      box-sizing: border-box;
+      font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+
+body {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 100vh;
+      background-color: #1a1a1a;
+      overflow: hidden;
+}
+
+.loader {
+      position: relative;
+      transform: skewY(-15deg) translateX(50px) translateY(50px);
+      animation: animateColor 2.5s linear infinite;
+}
+
+@keyframes animateColor {
+      0% {
+            filter: hue-rotate(0deg);
+      }
+
+      100% {
+            filter: hue-rotate(360deg);
+      }
+
+}
+
+.loader::before {
+      content: '';
+      position: absolute;
+      top: 300px;
+      width: 300px;
+      height: 200px;
+      background-color: rgba(0, 0, 0, 0.1);
+      transform: skewX(45deg);
+      filter: blur(25px);
+      transform-origin: bottom;
+}
+
+.loader span {
+      position: relative;
+      width: 200px;
+      height: 40px;
+      background-color: #3e3f46;
+      display: block;
+      transition: .5s;
+      z-index: var(--i);
+      animation: animate 5s infinite ease-in-out;
+      animation-delay: calc(-1s * var(--i));
+}
+
+@keyframes animate {
+      0%,100% {
+            transform: translateX(-70px);
+      }
+
+
+      50% {
+            transform: translateX(70px);
+      }
+
+
+}
+
+.loader span:hover {
+      background-color: #6e00ff;
+      transition: 0s;
+}
+
+.loader span::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: -150px;
+      height: 100%;
+      width: 150px;
+      background-color: #1d1d1f;
+      transform-origin: right;
+      transform: skewY(45deg);
+      transition: .5s;
+}
+
+.loader span:hover::before {
+      background-color: #5100c1;
+      transition: 0s;
+}
+
+.loader span::after {
+      content: '';
+      position: absolute;
+      top: -150px;
+      left: 0;
+      width: 100%;
+      height: 150px;
+      transform-origin: bottom;
+      transform: skewX(45deg);
+      background-color: #2d2e31;
+      transition: .5s;
+}
+
+.loader span:hover::after {
+      background-color: #4700c1;
+      transition: 0s;
+}
